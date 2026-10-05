@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# scraped showtime snapshots and raw payloads (the data branch holds the real ones)
+/.data/
+/raw/

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "alamo-lower-manhattan",
+    "name": "Alamo Lower Manhattan",
+    "group": "alamo",
+    "chainLabel": "Alamo",
+    "source": "alamo",
+    "sourceId": "2103",
+    "market": "nyc"
+  },
+  {
+    "id": "alamo-downtown-brooklyn",
+    "name": "Alamo Downtown Brooklyn",
+    "group": "alamo",
+    "chainLabel": "Alamo",
+    "source": "alamo",
+    "sourceId": "2101",
+    "market": "nyc"
+  },
+  {
+    "id": "alamo-staten-island",
+    "name": "Alamo Staten Island",
+    "group": "alamo",
+    "chainLabel": "Alamo",
+    "source": "alamo",
+    "sourceId": "2102",
+    "market": "nyc"
+  }
+]
