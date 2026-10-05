@@ -27,7 +27,9 @@ export function TheaterCard({
       <div className="flex items-baseline justify-between gap-2">
         <h3 className="text-sm font-bold">{theater.name}</h3>
         <span className="shrink-0 text-[11px] font-bold text-muted">
-          {theater.chainLabel} · {theater.distanceMi} mi
+          {theater.distanceMi === null
+            ? theater.chainLabel
+            : `${theater.chainLabel} · ${theater.distanceMi} mi`}
         </span>
       </div>
 

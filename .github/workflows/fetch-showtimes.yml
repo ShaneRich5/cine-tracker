@@ -1,0 +1,91 @@
+name: Fetch showtimes
+
+# Runs the connectors and commits the snapshot to the `data` branch, which the
+# app reads. Hourly, or on demand from the Actions tab.
+on:
+  schedule:
+    - cron: "7 * * * *"
+  workflow_dispatch:
+    inputs:
+      source:
+        description: "Only this source (leave blank for all)"
+        required: false
+        type: string
+      dry_run:
+        description: "Print what would change without committing"
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+# Never run two at once: they would race to push the data branch.
+concurrency:
+  group: fetch-showtimes
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      # The data branch is an orphan branch holding only the snapshot files.
+      # Check it out next to the code, or create it on the first run.
+      - name: Check out the data branch
+        run: |
+          if git ls-remote --exit-code --heads origin data >/dev/null 2>&1; then
+            git fetch --depth=1 origin data
+            git worktree add -B data .data origin/data
+          else
+            git worktree add --orphan -b data .data
+          fi
+
+      - name: Fetch showtimes
+        id: fetch
+        continue-on-error: true
+        env:
+          SOURCE: ${{ inputs.source }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          args=(--out .data --raw-dir raw)
+          if [ -n "$SOURCE" ]; then args+=(--source "$SOURCE"); fi
+          if [ "$DRY_RUN" = "true" ]; then args+=(--dry-run); fi
+          npm run fetch -- "${args[@]}"
+
+      # Raw payloads let us replay a run after fixing a parser.
+      - uses: actions/upload-artifact@v4
+        if: always() && hashFiles('raw/**') != ''
+        with:
+          name: raw-payloads
+          path: raw
+          retention-days: 7
+
+      # Commit even when a source failed, so status.json records the failure
+      # and the app can tell its data is stale.
+      - name: Commit the snapshot
+        if: ${{ !inputs.dry_run }}
+        working-directory: .data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Nothing to commit"
+          else
+            git commit -m "data: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git push origin data
+          fi
+
+      - name: Fail the run if a source failed
+        if: steps.fetch.outcome == 'failure'
+        run: exit 1

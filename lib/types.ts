@@ -34,7 +34,8 @@ export type Theater = {
   group: TheaterGroup;
   /** Short label shown on cards, e.g. "AMC". Local theaters show "Local". */
   chainLabel: string;
-  distanceMi: number;
+  /** null until theaters have coordinates. */
+  distanceMi: number | null;
 };
 
 export type Movie = {
@@ -43,7 +44,8 @@ export type Movie = {
   title: string;
   runtimeMin: number;
   rating: string;
-  genre: string;
+  /** null until TMDB supplies it. */
+  genre: string | null;
   /** Placeholder poster fill until TMDB posters are wired up. */
   posterColor: string;
 };
