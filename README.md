@@ -1,5 +1,29 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Showtime data
+
+Showtimes come from small connectors in `connectors/` (Alamo so far, NYC only). A GitHub Actions workflow
+(`.github/workflows/fetch-showtimes.yml`) runs them hourly, or on demand from the Actions tab, and commits the
+snapshot to the `data` branch. The app only reads that snapshot.
+
+```bash
+npm run fetch -- --dry-run   # show what would change, write nothing
+npm run fetch                # write the snapshot to .data/
+DATA_DIR=.data npm run dev   # run the app on it
+```
+
+Without a data source configured the app uses mock data (a frozen clock matching the design mockups).
+
+| Variable             | Purpose                                                           |
+| -------------------- | ----------------------------------------------------------------- |
+| `DATA_DIR`           | Read the snapshot from a local folder, such as `.data`            |
+| `GITHUB_DATA_REPO`   | `owner/repo` holding the `data` branch, for deployed environments |
+| `GITHUB_DATA_TOKEN`  | Read-only token for that repo (the repo is private)               |
+| `GITHUB_DATA_BRANCH` | Branch to read, default `data`                                    |
+
+Add a theater to `connectors/theaters.json`. Add a source by writing a `fetchTheater` and a pure `parse`
+(see `connectors/alamo/`), with a saved real payload under `fixtures/` for its test.
+
 ## Getting Started
 
 First, run the development server:
