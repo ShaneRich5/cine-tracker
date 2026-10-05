@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Preferences · Popcorn Matinee</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#2A1A12}a:hover{color:#000000}
+svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.lil{font-family:'Lilita One',sans-serif;font-weight:400}
+.sticker{border:2px solid #2A1A12;border-radius:16px;background:#FFFFFF;box-shadow:3px 3px 0 #2A1A12}
+.h{margin:18px 0 8px;font:400 19px 'Lilita One',sans-serif}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border-bottom:2px dashed #EFE3CC;min-height:44px}
+.chip{height:34px;padding:0 12px;border:2px solid #2A1A12;border-radius:17px;background:#FFFFFF;color:#2A1A12;font:700 13px 'Work Sans',sans-serif;cursor:pointer}
+.seg{flex:1;height:36px;border:0;border-radius:10px;font:700 12px 'Work Sans',sans-serif;cursor:pointer}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #FFFBF0; color: #2A1A12; font-family: 'Work Sans', sans-serif; box-sizing: border-box">
+  <header style="background: repeating-linear-gradient(90deg, {{accent}} 0 22px, #FFFFFF 22px 44px); border-bottom: 3px solid #2A1A12; padding: 10px 12px 14px 10px; display: flex; align-items: center; gap: 8px">
+    <a href="H-Home.dc.html" aria-label="Back" class="sticker" style="width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex: none; box-shadow: 2px 2px 0 #2A1A12"><svg class="i" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"></path></svg></a>
+    <h1 class="lil sticker" style="margin: 0; padding: 8px 14px; font-size: 24px; color: {{accent}}">Preferences</h1>
+  </header>
+
+  <div style="padding: 0 18px 24px">
+    <h2 class="h">Theater groups</h2>
+    <div class="sticker">
+      <sc-for list="{{groups}}" as="g" hint-placeholder-count="5">
+        <div class="row">
+          <div><div style="font-size: 15px; font-weight: 700">{{g.name}}</div><div style="font-size: 12px; color: #6B5A4E">{{g.sub}}</div></div>
+          <button role="switch" aria-checked="{{g.on}}" aria-label="{{g.name}}" onClick="{{g.toggle}}" style="{{g.track}}"><span style="width: 20px; height: 20px; border-radius: 10px; background: #FFFFFF; border: 2px solid #2A1A12; display: block"></span></button>
+        </div>
+      </sc-for>
+    </div>
+
+    <h2 class="h">Showtime layout</h2>
+    <div class="sticker" style="padding: 3px; display: flex; gap: 3px; border-radius: 14px">
+      <sc-for list="{{modes}}" as="m" hint-placeholder-count="3">
+        <button class="seg" onClick="{{m.pick}}" style="{{m.style}}">{{m.label}}</button>
+      </sc-for>
+    </div>
+
+    <h2 class="h">Seats</h2>
+    <div class="sticker">
+      <div class="row" style="border-bottom: 0">
+        <div style="min-width: 0"><div style="font-size: 15px; font-weight: 700">Hide accessible-only showings</div><div style="font-size: 12px; color: #6B5A4E">When only wheelchair and companion seats are left</div></div>
+        <button role="switch" aria-checked="{{seats.on}}" aria-label="Hide accessible-only showings" onClick="{{seats.toggle}}" style="{{seats.track}}"><span style="width: 20px; height: 20px; border-radius: 10px; background: #FFFFFF; border: 2px solid #2A1A12; display: block"></span></button>
+      </div>
+    </div>
+
+    <h2 class="h">Formats</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px">
+      <button class="chip" style="background: #FFD447">IMAX</button>
+      <button class="chip" style="background: #FFD447">Dolby</button>
+      <button class="chip" style="background: #FFD447">70mm</button>
+      <button class="chip">35mm</button>
+      <button class="chip">3D</button>
+      <button class="chip">Standard</button>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#D1301F","options":["#D1301F","#2457C5","#1E7F55"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#D1301F';
+    const st = this.state || {};
+    const off = st.off || { other: true };
+    const mode = st.mode || 'theater';
+    const seatsOn = st.seatsOff ? false : true;
+    const track = (on) => 'width: 52px; height: 30px; flex: none; border: 2px solid #2A1A12; border-radius: 15px; padding: 1px; display: flex; align-items: center; cursor: pointer; justify-content: ' + (on ? 'flex-end' : 'flex-start') + '; background: ' + (on ? accent : '#EFE3CC');
+    const groups = [
+      { id: 'amc', name: 'AMC', sub: 'Shows A-List eligibility' },
+      { id: 'regal', name: 'Regal', sub: 'Regal and UA theaters' },
+      { id: 'alamo', name: 'Alamo Drafthouse', sub: 'Dine-in theaters' },
+      { id: 'other', name: 'Other chains', sub: 'Cinemark, Showcase and smaller chains' },
+      { id: 'local', name: 'Local & indie', sub: 'Museum of the Moving Image, Nitehawk, Metrograph' }
+    ].map((g) => {
+      const on = !off[g.id];
+      return { ...g, on, track: track(on), toggle: () => this.setState({ off: { ...off, [g.id]: on } }) };
+    });
+    const modes = [['theater', 'By theater'], ['time', 'Time of day'], ['timeline', 'Timeline']].map((m) => ({
+      label: m[1],
+      style: m[0] === mode ? 'background: #FFD447; color: #2A1A12' : 'background: transparent; color: #6B5A4E',
+      pick: () => this.setState({ mode: m[0] })
+    }));
+    return {
+      accent,
+      groups,
+      modes,
+      seats: { on: seatsOn, track: track(seatsOn), toggle: () => this.setState({ seatsOff: seatsOn }) }
+    };
+  }
+}
+</script>
+</body>
+</html>

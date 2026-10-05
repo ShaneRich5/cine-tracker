@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Home · Popcorn Matinee</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&amp;family=Work+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#2A1A12}a:hover{color:#000000}
+svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.lil{font-family:'Lilita One',sans-serif;font-weight:400}
+.mono{font-family:'IBM Plex Mono',monospace}
+.sticker{border:2px solid #2A1A12;border-radius:16px;background:#FFFFFF;box-shadow:3px 3px 0 #2A1A12}
+.tok{font:600 13px 'IBM Plex Mono',monospace;padding:5px 10px;border-radius:999px;background:#FFD447;border:1.5px solid #2A1A12;color:#2A1A12;text-decoration:none}
+.tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-decoration:none;font:400 12px 'Lilita One',sans-serif;letter-spacing:0.02em;color:#6B5A4E}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #FFFBF0; color: #2A1A12; font-family: 'Work Sans', sans-serif; box-sizing: border-box">
+  <header style="height: 150px; background: repeating-linear-gradient(90deg, {{accent}} 0 22px, #FFFFFF 22px 44px); border-bottom: 3px solid #2A1A12; display: flex; align-items: center; justify-content: center; position: relative">
+    <div class="sticker" style="padding: 10px 18px; text-align: center">
+      <div class="lil" style="font-size: 32px; line-height: 1; color: {{accent}}">cine-tracker</div>
+      <div style="font-size: 12px; font-weight: 700; margin-top: 4px">Mon, Oct 5 · near Astoria</div>
+    </div>
+    <a href="H-Prefs.dc.html" aria-label="Preferences" class="sticker" style="position: absolute; top: 10px; right: 10px; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 2px 2px 0 #2A1A12"><svg class="i" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"></path><circle cx="16" cy="7" r="2"></circle><circle cx="10" cy="17" r="2"></circle></svg></a>
+  </header>
+
+  <section style="padding: 18px 18px 0">
+    <h2 class="lil" style="margin: 0 0 12px; font-size: 24px">Playing tonight</h2>
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <sc-for list="{{movies}}" as="m" hint-placeholder-count="3">
+        <div class="sticker" style="padding: 10px; display: flex; gap: 12px">
+          <a href="H-Movie.dc.html" aria-label="{{m.title}}" style="width: 56px; height: 80px; border-radius: 10px; border: 2px solid #2A1A12; background: {{m.color}}; flex: none"></a>
+          <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+            <div style="display: flex; justify-content: space-between; gap: 8px; align-items: baseline">
+              <a class="lil" href="H-Movie.dc.html" style="font-size: 19px; text-decoration: none">{{m.title}}</a>
+              <span style="font-size: 12px; font-weight: 600; color: #6B5A4E; flex: none">{{m.where}}</span>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px">
+              <sc-for list="{{m.times}}" as="s" hint-placeholder-count="3"><a class="tok" href="H-Movie.dc.html">{{s}}</a></sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding: 18px 18px 0">
+    <h2 class="lil" style="margin: 0 0 10px; font-size: 20px">On your watchlist</h2>
+    <div style="display: flex; gap: 8px; flex-wrap: wrap">
+      <a href="H-Movie.dc.html" class="sticker" style="padding: 8px 12px; font-size: 13px; font-weight: 700; text-decoration: none; background: #FFD447">Night Ferry · new times</a>
+      <a href="H-Movie.dc.html" class="sticker" style="padding: 8px 12px; font-size: 13px; font-weight: 700; text-decoration: none">Paper Moons · 70mm Sat</a>
+      <a href="H-Movie.dc.html" class="sticker" style="padding: 8px 12px; font-size: 13px; font-weight: 700; text-decoration: none">Glass Orchard · Oct 23</a>
+    </div>
+  </section>
+
+  <nav aria-label="Main" style="position: absolute; left: 0; right: 0; bottom: 0; height: 74px; background: #FFFFFF; border-top: 3px solid #2A1A12; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding-bottom: 8px; box-sizing: border-box">
+    <a class="tab" href="H-Home.dc.html" style="color: {{accent}}"><svg class="i" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"></path></svg><span>Home</span></a>
+    <a class="tab" href="H-Movie.dc.html"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M7 4v16M17 4v16M3 9h4M3 15h4M17 9h4M17 15h4"></path></svg><span>Movies</span></a>
+    <a class="tab" href="B-Theater.dc.html"><svg class="i" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg><span>Theaters</span></a>
+    <a class="tab" href="B-Screenings.dc.html"><svg class="i" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"></path></svg><span>Screenings</span></a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#D1301F","options":["#D1301F","#2457C5","#1E7F55"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      accent: this.props.accent ?? '#D1301F',
+      movies: [
+        { title: 'Harbor Lights', where: '4 theaters', color: '#2E3F7A', times: ['3:45 IMAX', '6:30', '7:00 Dolby', '7:30 70mm'] },
+        { title: 'Night Ferry', where: '3 theaters', color: '#7A2E2E', times: ['4:20', '6:30', '8:15'] },
+        { title: 'Low Tide Motel', where: '2 theaters', color: '#6B3A55', times: ['7:10', '9:55'] }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
