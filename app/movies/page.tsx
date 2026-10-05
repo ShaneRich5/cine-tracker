@@ -1,21 +1,26 @@
+import type { Metadata } from "next";
 import { AppShell } from "@/components/app-shell";
 import { MovieBrowser } from "@/components/movie-browser";
 import { MovieDetail } from "@/components/movie-detail";
-import { MobileHomeHeader } from "@/components/striped-header";
-import { TonightList, WatchlistChips } from "@/components/tonight-list";
+import { PosterGrid } from "@/components/poster-grid";
+import {
+  MobileTitleHeader,
+  PreferencesIconLink,
+} from "@/components/striped-header";
 import {
   getMovies,
   getNow,
   getShowtimes,
   getTheaters,
   getWatchlist,
-  LOCATION_LABEL,
 } from "@/lib/data";
 import { getPrefs } from "@/lib/get-prefs";
-import { buildTonight } from "@/lib/showtimes";
-import { formatDayLabel } from "@/lib/time";
+import { buildTonight, moviesWithShowtimes } from "@/lib/showtimes";
+import { formatRuntime } from "@/lib/time";
 
-export default async function HomePage() {
+export const metadata: Metadata = { title: "Movies" };
+
+export default async function MoviesPage() {
   const now = getNow();
   const [prefs, movies, theaters, showtimes, watchlist] = await Promise.all([
     getPrefs(),
@@ -26,30 +31,35 @@ export default async function HomePage() {
   ]);
   const tonight = buildTonight({ now, movies, showtimes, theaters, prefs });
   const featured = tonight[0]?.movie;
+  const thisWeek = moviesWithShowtimes(movies, showtimes);
 
   return (
     <AppShell
-      section="home"
+      section="movies"
       prefs={prefs}
       now={now}
       mobileHeader={
-        <MobileHomeHeader
-          dateLabel={formatDayLabel(now)}
-          locationLabel={LOCATION_LABEL}
-        />
+        <MobileTitleHeader title="Movies" action={<PreferencesIconLink />} />
       }
     >
-      <div className="desktop:hidden">
-        <TonightList entries={tonight} />
-        <WatchlistChips entries={watchlist} movies={movies} />
-      </div>
+      <section aria-labelledby="this-week" className="pt-[18px] desktop:hidden">
+        <h2 id="this-week" className="mb-3 font-display text-2xl">
+          Playing this week
+        </h2>
+        <PosterGrid
+          entries={thisWeek.map((movie) => ({
+            movie,
+            meta: `${formatRuntime(movie.runtimeMin)} · ${movie.rating}`,
+          }))}
+        />
+      </section>
 
       <MovieBrowser
         tonight={tonight}
         selectedId={featured?.id}
         className="max-desktop:hidden"
       >
-        {featured ? (
+        {featured && (
           <MovieDetail
             movie={featured}
             now={now}
@@ -58,10 +68,6 @@ export default async function HomePage() {
             theaters={theaters}
             watchlisted={watchlist.some((w) => w.movieId === featured.id)}
           />
-        ) : (
-          <h1 className="font-display text-[38px] leading-none text-accent">
-            cine-tracker
-          </h1>
         )}
       </MovieBrowser>
     </AppShell>
