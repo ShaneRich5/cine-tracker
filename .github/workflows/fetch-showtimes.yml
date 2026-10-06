@@ -76,6 +76,14 @@ jobs:
         if: ${{ !inputs.dry_run }}
         working-directory: .data
         run: |
+          # The data branch has no app to build. Without this, Vercel tries to
+          # deploy every hourly commit as a preview and the build fails.
+          cat > vercel.json <<'JSON'
+          {
+            "$schema": "https://openapi.vercel.sh/vercel.json",
+            "git": { "deploymentEnabled": false }
+          }
+          JSON
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
