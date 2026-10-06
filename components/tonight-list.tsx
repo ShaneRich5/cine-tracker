@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Poster } from "./poster";
 import { cn } from "@/lib/utils";
 import {
   showtimeLabel,
@@ -30,9 +31,13 @@ export function TonightList({ entries }: { entries: TonightEntry[] }) {
                   href={href}
                   tabIndex={-1}
                   aria-hidden="true"
-                  className="h-[84px] w-[60px] shrink-0 rounded-[10px] border-2 border-ink"
-                  style={{ backgroundColor: movie.posterColor }}
-                />
+                  className="shrink-0"
+                >
+                  <Poster
+                    movie={movie}
+                    className="h-[84px] w-[60px] rounded-[10px]"
+                  />
+                </Link>
                 <div className="flex min-w-0 flex-1 flex-col gap-1.5">
                   <div className="flex items-baseline justify-between gap-2">
                     <Link

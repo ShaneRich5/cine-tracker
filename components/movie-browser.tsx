@@ -23,18 +23,27 @@ export function MovieBrowser({
         className,
       )}
     >
-      <aside aria-labelledby="tonight-desktop" className="max-desktop:hidden">
-        <h2 id="tonight-desktop" className="mb-3 font-display text-2xl">
+      <aside
+        aria-labelledby="tonight-desktop"
+        className="max-desktop:hidden desktop:sticky desktop:top-4 desktop:flex desktop:max-h-[calc(100vh-2rem)] desktop:flex-col"
+      >
+        <h2
+          id="tonight-desktop"
+          className="mb-3 shrink-0 font-display text-2xl"
+        >
           Playing tonight
         </h2>
         {tonight.length > 0 ? (
-          <PosterGrid
-            selectedId={selectedId}
-            entries={tonight.map((entry) => ({
-              movie: entry.movie,
-              meta: `${theaterCountLabel(entry.theaterCount)} · next ${formatClock(entry.upcoming[0].startsAt)}`,
-            }))}
-          />
+          <div className="-mr-2 min-h-0 overflow-y-auto overscroll-contain pr-2 pb-1">
+            <PosterGrid
+              variant="list"
+              selectedId={selectedId}
+              entries={tonight.map((entry) => ({
+                movie: entry.movie,
+                meta: `${theaterCountLabel(entry.theaterCount)} · next ${formatClock(entry.upcoming[0].startsAt)}`,
+              }))}
+            />
+          </div>
         ) : (
           <p className="text-sm text-muted">
             Nothing left tonight at the theaters you follow.

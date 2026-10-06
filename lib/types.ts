@@ -48,6 +48,8 @@ export type Movie = {
   genre: string | null;
   /** Placeholder poster fill until TMDB posters are wired up. */
   posterColor: string;
+  /** Full poster image URL from TMDB; the colored placeholder shows when absent. */
+  posterUrl?: string | null;
 };
 
 export type Showtime = {
