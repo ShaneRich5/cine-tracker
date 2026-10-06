@@ -43,3 +43,6 @@ next-env.d.ts
 # scraped showtime snapshots and raw payloads (the data branch holds the real ones)
 /.data/
 /raw/
+
+# Sentry Config File
+.env.sentry-build-plugin
