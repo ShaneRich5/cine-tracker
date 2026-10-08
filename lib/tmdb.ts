@@ -1,4 +1,5 @@
-// Poster lookup. Needs TMDB_API_KEY (a v4 "API Read Access Token"); without it
+// Poster lookup. Needs TMDB_API_KEY (either the v3 API key or the v4 "API Read
+// Access Token"; v4 tokens are JWTs, so they start with "eyJ"). Without it
 // movies keep their colored placeholder. Responses are cached by Next's fetch
 // cache for a week, so a movie is searched once however many pages show it.
 import type { Movie } from "./types";
@@ -17,9 +18,12 @@ async function findPoster(
   const url = new URL("https://api.themoviedb.org/3/search/movie");
   url.searchParams.set("query", title);
   url.searchParams.set("include_adult", "false");
+  const headers: HeadersInit = {};
+  if (token.startsWith("eyJ")) headers.Authorization = `Bearer ${token}`;
+  else url.searchParams.set("api_key", token);
   try {
     const res = await fetch(url, {
-      headers: { Authorization: `Bearer ${token}` },
+      headers,
       next: { revalidate: WEEK },
     });
     if (!res.ok) return null;
