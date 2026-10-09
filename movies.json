@@ -5,6 +5,7 @@
 {"id":"appofeniacs","title":"Appofeniacs","year":null,"runtimeMin":105,"rating":"R"},
 {"id":"avengers-endgame-encore-2026","title":"Avengers Endgame: Encore","year":2026,"runtimeMin":198,"rating":"PG-13"},
 {"id":"capturing-bigfoot","title":"Capturing Bigfoot","year":null,"runtimeMin":117,"rating":"NR"},
+{"id":"clayface","title":"Clayface","year":null,"runtimeMin":123,"rating":"R"},
 {"id":"coyote-vs-acme","title":"Coyote vs. Acme","year":null,"runtimeMin":118,"rating":"PG"},
 {"id":"crunchyroll-yuri-on-ice-10th-anniversary","title":"Crunchyroll: YURI!!! ON ICE 10th Anniversary","year":null,"runtimeMin":134,"rating":"NR"},
 {"id":"digger","title":"Digger","year":null,"runtimeMin":144,"rating":"R"},
@@ -17,6 +18,7 @@
 {"id":"hellbound-hellraiser-ii","title":"Hellbound: Hellraiser II","year":null,"runtimeMin":112,"rating":"R"},
 {"id":"hellraiser-1987","title":"Hellraiser","year":1987,"runtimeMin":108,"rating":"R"},
 {"id":"ken-russells-the-devils-2026","title":"Ken Russell'S the Devils","year":2026,"runtimeMin":129,"rating":"NC-17"},
+{"id":"la-bola-negra","title":"La Bola Negra","year":null,"runtimeMin":175,"rating":"R"},
 {"id":"misty-green","title":"Misty Green","year":null,"runtimeMin":119,"rating":"R"},
 {"id":"naza","title":"Naza","year":null,"runtimeMin":95,"rating":"TBC"},
 {"id":"never-after-dark","title":"Never After Dark","year":null,"runtimeMin":119,"rating":"NR"},
@@ -46,6 +48,7 @@
 {"id":"verity","title":"Verity","year":null,"runtimeMin":132,"rating":"R"},
 {"id":"weird-wednesday-manos-the-hands-of-fate","title":"Weird Wednesday: MANOS: THE HANDS OF FATE","year":null,"runtimeMin":84,"rating":"NR"},
 {"id":"whalefall","title":"Whalefall","year":null,"runtimeMin":126,"rating":"PG-13"},
+{"id":"wicker","title":"Wicker","year":null,"runtimeMin":120,"rating":"R"},
 {"id":"you-can-see-everything","title":"You Can See Everything","year":null,"runtimeMin":190,"rating":"R"},
 {"id":"your-mother-your-mother-your-mother","title":"Your Mother Your Mother Your Mother","year":null,"runtimeMin":127,"rating":"R"}
 ]}
