@@ -69,6 +69,7 @@ export function toMovie(m: StoredMovie): Movie {
     id: m.id,
     tmdbId: null,
     title: m.title,
+    year: m.year,
     runtimeMin: m.runtimeMin ?? 0,
     rating: m.rating ?? "NR",
     genre: null,

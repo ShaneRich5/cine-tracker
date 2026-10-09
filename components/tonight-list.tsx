@@ -70,13 +70,18 @@ export function TonightList({ entries }: { entries: TonightEntry[] }) {
   );
 }
 
-/** Mobile home: watchlist updates as sticker chips. */
+/** Home: watchlisted movies as sticker chips with their next showing. */
 export function WatchlistChips({
   entries,
   movies,
+  className,
+  headingId = "watchlist-heading",
 }: {
   entries: WatchlistEntry[];
   movies: Movie[];
+  className?: string;
+  /** Home renders this twice (mobile and desktop), so each needs its own ID. */
+  headingId?: string;
 }) {
   const items = entries.flatMap((entry) => {
     const movie = movies.find((m) => m.id === entry.movieId);
@@ -85,8 +90,8 @@ export function WatchlistChips({
   if (items.length === 0) return null;
 
   return (
-    <section aria-labelledby="watchlist-heading" className="pt-[18px]">
-      <h2 id="watchlist-heading" className="mb-2.5 font-display text-xl">
+    <section aria-labelledby={headingId} className={cn("pt-[18px]", className)}>
+      <h2 id={headingId} className="mb-2.5 font-display text-xl">
         On your watchlist
       </h2>
       <ul className="flex flex-wrap gap-2">

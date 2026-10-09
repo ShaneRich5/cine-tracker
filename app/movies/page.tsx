@@ -7,14 +7,9 @@ import {
   MobileTitleHeader,
   PreferencesIconLink,
 } from "@/components/striped-header";
-import {
-  getMovies,
-  getNow,
-  getShowtimes,
-  getTheaters,
-  getWatchlist,
-} from "@/lib/data";
+import { getMovies, getNow, getShowtimes, getTheaters } from "@/lib/data";
 import { getPrefs } from "@/lib/get-prefs";
+import { getWatchlistIds } from "@/lib/get-watchlist";
 import { buildTonight, moviesWithShowtimes } from "@/lib/showtimes";
 import { formatRuntime } from "@/lib/time";
 
@@ -27,7 +22,7 @@ export default async function MoviesPage() {
     getMovies(),
     getTheaters(),
     getShowtimes(),
-    getWatchlist(),
+    getWatchlistIds(),
   ]);
   const tonight = buildTonight({ now, movies, showtimes, theaters, prefs });
   const featured = tonight[0]?.movie;
@@ -66,7 +61,7 @@ export default async function MoviesPage() {
             prefs={prefs}
             showtimes={showtimes}
             theaters={theaters}
-            watchlisted={watchlist.some((w) => w.movieId === featured.id)}
+            watchlisted={watchlist.includes(featured.id)}
           />
         )}
       </MovieBrowser>

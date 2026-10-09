@@ -2,9 +2,9 @@ import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { theaterCountLabel, type TonightEntry } from "@/lib/showtimes";
 import { formatClock } from "@/lib/time";
-import { PosterGrid } from "./poster-grid";
+import { MovieSearchList } from "./movie-search-list";
 
-/** Desktop two-column layout: "Playing tonight" posters left, movie detail right. */
+/** Desktop two-column layout: searchable "Playing tonight" list left, movie detail right. */
 export function MovieBrowser({
   tonight,
   selectedId,
@@ -23,9 +23,10 @@ export function MovieBrowser({
         className,
       )}
     >
+      {/* Short enough to fit under the header before you scroll; sticky after. */}
       <aside
         aria-labelledby="tonight-desktop"
-        className="max-desktop:hidden desktop:sticky desktop:top-4 desktop:flex desktop:max-h-[calc(100vh-2rem)] desktop:flex-col"
+        className="max-desktop:hidden desktop:sticky desktop:top-4 desktop:flex desktop:max-h-[calc(100vh-10rem)] desktop:flex-col"
       >
         <h2
           id="tonight-desktop"
@@ -34,16 +35,13 @@ export function MovieBrowser({
           Playing tonight
         </h2>
         {tonight.length > 0 ? (
-          <div className="-mr-2 min-h-0 overflow-y-auto overscroll-contain pr-2 pb-1">
-            <PosterGrid
-              variant="list"
-              selectedId={selectedId}
-              entries={tonight.map((entry) => ({
-                movie: entry.movie,
-                meta: `${theaterCountLabel(entry.theaterCount)} · next ${formatClock(entry.upcoming[0].startsAt)}`,
-              }))}
-            />
-          </div>
+          <MovieSearchList
+            selectedId={selectedId}
+            entries={tonight.map((entry) => ({
+              movie: entry.movie,
+              meta: `${theaterCountLabel(entry.theaterCount)} · next ${formatClock(entry.upcoming[0].startsAt)}`,
+            }))}
+          />
         ) : (
           <p className="text-sm text-muted">
             Nothing left tonight at the theaters you follow.

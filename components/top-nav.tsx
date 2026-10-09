@@ -14,10 +14,13 @@ export function TopNav({
   section,
   dateLabel,
   locationLabel,
+  updatedLabel,
 }: {
   section: Section;
   dateLabel: string;
   locationLabel: string;
+  /** "updated 12m ago"; null on mock data. */
+  updatedLabel?: string | null;
 }) {
   const links = [
     {
@@ -48,6 +51,12 @@ export function TopNav({
           </span>
           <span className="mt-1 block text-xs font-bold">
             {dateLabel} · {locationLabel}
+            {updatedLabel && (
+              <span className="font-semibold text-muted">
+                {" "}
+                · {updatedLabel}
+              </span>
+            )}
           </span>
         </Link>
         <nav aria-label="Main">

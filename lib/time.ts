@@ -115,6 +115,21 @@ const weekdayFormatter = new Intl.DateTimeFormat("en-US", {
   weekday: "short",
 });
 
+/** "Thu" */
+export function weekdayLabel(date: Date): string {
+  return weekdayFormatter.format(date);
+}
+
+/** "just now", "12m ago", "5h ago", "3d ago" */
+export function formatAgo(date: Date, now: Date): string {
+  const minutes = Math.floor((now.getTime() - date.getTime()) / 60_000);
+  if (minutes < 1) return "just now";
+  if (minutes < 60) return `${minutes}m ago`;
+  const hours = Math.floor(minutes / 60);
+  if (hours < 48) return `${hours}h ago`;
+  return `${Math.floor(hours / 24)}d ago`;
+}
+
 /** The next `count` days starting today, for the day picker. */
 export function getDayOptions(now: Date, count = 7): DayOption[] {
   const today = dayKey(now);

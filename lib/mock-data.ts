@@ -1,7 +1,7 @@
 // Mock data for design review, shaped like the Supabase schema in
 // docs/build-brief.md. Replaced by database queries in session 2.
 import { addDays, zonedDate } from "./time";
-import type { Format, Movie, Showtime, Theater, WatchlistEntry } from "./types";
+import type { Format, Movie, Showtime, Theater } from "./types";
 
 /** The moment the mockups depict: Mon, Oct 5 at 2:40 PM in New York. */
 export const MOCK_TODAY = "2026-10-05";
@@ -110,11 +110,12 @@ export const movies: Movie[] = [
   },
 ];
 
-export const watchlist: WatchlistEntry[] = [
-  { movieId: "night-ferry", note: "new times", highlight: true },
-  { movieId: "paper-moons", note: "70mm Sat", highlight: false },
-  { movieId: "glass-orchard", note: "Oct 23", highlight: false },
-  { movieId: "harbor-lights", note: null, highlight: false },
+/** The watchlist before you've changed it (no ct_watchlist cookie yet). */
+export const watchlistIds: string[] = [
+  "night-ferry",
+  "paper-moons",
+  "glass-orchard",
+  "harbor-lights",
 ];
 
 type Slot = {
