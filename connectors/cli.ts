@@ -1,12 +1,13 @@
 // npm run fetch -- [--source alamo] [--out .data] [--window 14] [--raw-dir raw] [--dry-run]
 import { parseArgs } from "node:util";
 import { alamo } from "./alamo";
+import { regal } from "./regal";
 import { runConnectors } from "./run";
 import { JsonFileSink } from "./sinks/json-file";
 import theaters from "./theaters.json";
 import type { Connector, TheaterRef } from "./types";
 
-const connectors: Connector[] = [alamo];
+const connectors: Connector[] = [alamo, regal];
 
 async function main() {
   const { values } = parseArgs({

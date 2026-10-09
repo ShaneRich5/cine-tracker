@@ -25,5 +25,59 @@
     "source": "alamo",
     "sourceId": "2102",
     "market": "nyc"
+  },
+  {
+    "id": "regal-union-square",
+    "name": "Regal Union Square",
+    "group": "regal",
+    "chainLabel": "Regal",
+    "source": "regal",
+    "sourceId": "1320",
+    "market": "nyc"
+  },
+  {
+    "id": "regal-times-square",
+    "name": "Regal Times Square",
+    "group": "regal",
+    "chainLabel": "Regal",
+    "source": "regal",
+    "sourceId": "1929",
+    "market": "nyc"
+  },
+  {
+    "id": "regal-battery-park",
+    "name": "Regal Battery Park",
+    "group": "regal",
+    "chainLabel": "Regal",
+    "source": "regal",
+    "sourceId": "1335",
+    "market": "nyc"
+  },
+  {
+    "id": "regal-essex-crossing",
+    "name": "Regal Essex Crossing",
+    "group": "regal",
+    "chainLabel": "Regal",
+    "source": "regal",
+    "sourceId": "1412",
+    "market": "nyc"
+  },
+  {
+    "id": "regal-sheepshead-bay",
+    "name": "Regal UA Sheepshead Bay",
+    "group": "regal",
+    "chainLabel": "Regal",
+    "source": "regal",
+    "sourceId": "1159",
+    "market": "nyc"
+  },
+  {
+    "id": "regal-bricktown-charleston",
+    "name": "Regal Bricktown Charleston",
+    "group": "regal",
+    "chainLabel": "Regal",
+    "source": "regal",
+    "sourceId": "1419",
+    "market": "nyc"
   }
 ]
