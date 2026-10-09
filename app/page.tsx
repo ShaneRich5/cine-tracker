@@ -8,11 +8,12 @@ import {
   getNow,
   getShowtimes,
   getTheaters,
-  getWatchlist,
   LOCATION_LABEL,
 } from "@/lib/data";
 import { getPrefs } from "@/lib/get-prefs";
+import { getWatchlistIds } from "@/lib/get-watchlist";
 import { buildTonight } from "@/lib/showtimes";
+import { buildWatchlist } from "@/lib/watchlist";
 import { formatDayLabel } from "@/lib/time";
 
 export default async function HomePage() {
@@ -22,10 +23,18 @@ export default async function HomePage() {
     getMovies(),
     getTheaters(),
     getShowtimes(),
-    getWatchlist(),
+    getWatchlistIds(),
   ]);
   const tonight = buildTonight({ now, movies, showtimes, theaters, prefs });
   const featured = tonight[0]?.movie;
+  const watchlistEntries = buildWatchlist({
+    ids: watchlist,
+    now,
+    movies,
+    showtimes,
+    theaters,
+    prefs,
+  });
 
   return (
     <AppShell
@@ -41,8 +50,15 @@ export default async function HomePage() {
     >
       <div className="desktop:hidden">
         <TonightList entries={tonight} />
-        <WatchlistChips entries={watchlist} movies={movies} />
+        <WatchlistChips entries={watchlistEntries} movies={movies} />
       </div>
+
+      <WatchlistChips
+        entries={watchlistEntries}
+        movies={movies}
+        className="pt-0 pb-5 max-desktop:hidden"
+        headingId="watchlist-heading-desktop"
+      />
 
       <MovieBrowser
         tonight={tonight}
@@ -56,7 +72,7 @@ export default async function HomePage() {
             prefs={prefs}
             showtimes={showtimes}
             theaters={theaters}
-            watchlisted={watchlist.some((w) => w.movieId === featured.id)}
+            watchlisted={watchlist.includes(featured.id)}
           />
         ) : (
           <h1 className="font-display text-[38px] leading-none text-accent">

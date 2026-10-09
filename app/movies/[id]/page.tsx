@@ -4,15 +4,16 @@ import { AppShell } from "@/components/app-shell";
 import { MovieBrowser } from "@/components/movie-browser";
 import { MovieDetail } from "@/components/movie-detail";
 import { MobileTitleHeader } from "@/components/striped-header";
+import { WatchlistButton } from "@/components/watchlist-button";
 import {
   getMovie,
   getMovies,
   getNow,
   getShowtimes,
   getTheaters,
-  getWatchlist,
 } from "@/lib/data";
 import { getPrefs } from "@/lib/get-prefs";
+import { getWatchlistIds } from "@/lib/get-watchlist";
 import { buildTonight, movieFormats, movieMeta } from "@/lib/showtimes";
 
 export async function generateMetadata(
@@ -35,7 +36,7 @@ export default async function MoviePage(props: PageProps<"/movies/[id]">) {
     getMovies(),
     getTheaters(),
     getShowtimes(),
-    getWatchlist(),
+    getWatchlistIds(),
   ]);
   const tonight = buildTonight({ now, movies, showtimes, theaters, prefs });
 
@@ -49,6 +50,13 @@ export default async function MoviePage(props: PageProps<"/movies/[id]">) {
           backHref="/"
           title={movie.title}
           subtitle={movieMeta(movie, movieFormats(movie.id, showtimes))}
+          action={
+            <WatchlistButton
+              variant="icon"
+              movieId={movie.id}
+              on={watchlist.includes(movie.id)}
+            />
+          }
         />
       }
     >
@@ -60,7 +68,7 @@ export default async function MoviePage(props: PageProps<"/movies/[id]">) {
           prefs={prefs}
           showtimes={showtimes}
           theaters={theaters}
-          watchlisted={watchlist.some((w) => w.movieId === movie.id)}
+          watchlisted={watchlist.includes(movie.id)}
         />
       </MovieBrowser>
     </AppShell>

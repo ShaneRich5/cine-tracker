@@ -4,8 +4,9 @@
 import { cache } from "react";
 import { liveConfig, loadSnapshot } from "./live-data";
 import * as mock from "./mock-data";
-import { withPosters } from "./tmdb";
-import type { Movie, Showtime, Theater, WatchlistEntry } from "./types";
+import { withTmdb } from "./tmdb";
+import type { StatusFile } from "../connectors/stored";
+import type { Movie, Showtime, Theater } from "./types";
 
 export const LOCATION_LABEL = mock.LOCATION_LABEL;
 
@@ -14,8 +15,10 @@ export function getNow(): Date {
   return liveConfig() ? new Date() : mock.MOCK_NOW;
 }
 
+/** Live movies get TMDB posters and details; the mock titles are made up, so they don't. */
 export const getMovies = cache(async (): Promise<Movie[]> => {
-  return withPosters((await loadSnapshot())?.movies ?? mock.movies);
+  const snapshot = await loadSnapshot();
+  return snapshot ? withTmdb(snapshot.movies) : mock.movies;
 });
 
 export async function getMovie(id: string): Promise<Movie | null> {
@@ -31,7 +34,7 @@ export async function getShowtimes(): Promise<Showtime[]> {
   return (await loadSnapshot())?.showtimes ?? mock.showtimes;
 }
 
-/** Watchlists aren't stored yet, so live data starts with none. */
-export async function getWatchlist(): Promise<WatchlistEntry[]> {
-  return (await loadSnapshot()) ? [] : mock.watchlist;
+/** The connectors' last run per source; null on mock data. */
+export async function getStatus(): Promise<StatusFile | null> {
+  return (await loadSnapshot())?.status ?? null;
 }

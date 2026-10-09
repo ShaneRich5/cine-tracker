@@ -42,6 +42,8 @@ export type Movie = {
   id: string;
   tmdbId: number | null;
   title: string;
+  /** Release year when the title carries one, e.g. "Nosferatu (1922)". */
+  year?: number | null;
   runtimeMin: number;
   rating: string;
   /** null until TMDB supplies it. */
@@ -50,6 +52,8 @@ export type Movie = {
   posterColor: string;
   /** Full poster image URL from TMDB; the colored placeholder shows when absent. */
   posterUrl?: string | null;
+  /** TMDB overview. */
+  synopsis?: string | null;
 };
 
 export type Showtime = {

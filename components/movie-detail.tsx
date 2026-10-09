@@ -58,7 +58,7 @@ export function MovieDetail({
           "flex flex-wrap items-center justify-between gap-3 px-[18px] py-4 max-desktop:hidden",
         )}
       >
-        <div>
+        <div className="min-w-0 flex-1">
           <h1 className="font-display text-[38px] leading-none text-accent">
             {movie.title}
           </h1>
@@ -67,8 +67,13 @@ export function MovieDetail({
               withGenre: true,
             })}
           </p>
+          {movie.synopsis && (
+            <p className="mt-2 max-w-[70ch] text-sm text-muted">
+              {movie.synopsis}
+            </p>
+          )}
         </div>
-        <WatchlistButton initialOn={watchlisted} />
+        <WatchlistButton movieId={movie.id} on={watchlisted} />
       </div>
 
       <div className="pt-3.5 desktop:pt-[18px]">
@@ -122,6 +127,18 @@ export function MovieDetail({
             filters.
           </p>
         </div>
+      )}
+
+      {movie.synopsis && (
+        <section aria-labelledby="about-movie" className="pt-6 desktop:hidden">
+          <h2 id="about-movie" className="mb-1.5 font-display text-xl">
+            About
+          </h2>
+          <p className="text-sm">
+            {movie.genre && <strong>{movie.genre}. </strong>}
+            {movie.synopsis}
+          </p>
+        </section>
       )}
     </div>
   );

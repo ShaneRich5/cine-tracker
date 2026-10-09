@@ -1,8 +1,10 @@
 import type { ReactNode } from "react";
-import { LOCATION_LABEL } from "@/lib/data";
+import { getStatus, LOCATION_LABEL } from "@/lib/data";
+import { getFreshness } from "@/lib/freshness";
 import type { Prefs } from "@/lib/prefs";
 import { formatDayLabel } from "@/lib/time";
 import { cn } from "@/lib/utils";
+import { StaleNotice, updatedLabel } from "./freshness-notice";
 import { PrefsPanel, PrefsPanelProvider } from "./prefs-panel";
 import { TabBar, type Section } from "./tab-bar";
 import { TopNav } from "./top-nav";
@@ -10,8 +12,9 @@ import { TopNav } from "./top-nav";
 /**
  * Page frame. Desktop (900px and up) gets the striped top nav and the
  * preferences panel; mobile gets the page's own header and the bottom tab bar.
+ * Both warn when the showtimes are stale.
  */
-export function AppShell({
+export async function AppShell({
   section,
   prefs,
   now,
@@ -25,6 +28,9 @@ export function AppShell({
   children: ReactNode;
 }) {
   const hasTabBar = section !== "preferences";
+  const status = await getStatus();
+  const freshness = status ? getFreshness(status, now) : null;
+  const updated = freshness ? updatedLabel(freshness, now) : null;
 
   return (
     <PrefsPanelProvider>
@@ -32,6 +38,7 @@ export function AppShell({
         section={section}
         dateLabel={formatDayLabel(now)}
         locationLabel={LOCATION_LABEL}
+        updatedLabel={updated}
       />
       <div className="desktop:hidden">{mobileHeader}</div>
       <main
@@ -41,7 +48,19 @@ export function AppShell({
         )}
       >
         {section !== "preferences" && <PrefsPanel prefs={prefs} />}
+        {freshness && (
+          <StaleNotice
+            freshness={freshness}
+            now={now}
+            className="mt-3.5 mb-1 desktop:mt-0 desktop:mb-5"
+          />
+        )}
         {children}
+        {updated && (
+          <p className="pt-6 text-center text-xs text-muted desktop:hidden">
+            Showtimes {updated}
+          </p>
+        )}
       </main>
       {hasTabBar && <TabBar section={section} />}
     </PrefsPanelProvider>
