@@ -1,5 +1,5 @@
 {"movies":[
-{"id":"9-to-5","title":"9 to 5","year":null,"runtimeMin":125,"rating":"PG"},
+{"id":"9-to-5-re-release","title":"9 TO 5 Re-Release","year":null,"runtimeMin":125,"rating":"PG"},
 {"id":"a-prayer-for-the-dying-2026","title":"A Prayer for the Dying","year":2026,"runtimeMin":130,"rating":"NR"},
 {"id":"a-tale-of-two-sisters","title":"A Tale of Two Sisters","year":null,"runtimeMin":134,"rating":"R"},
 {"id":"appofeniacs","title":"Appofeniacs","year":null,"runtimeMin":105,"rating":"R"},
@@ -15,7 +15,6 @@
 {"id":"fresh-meat","title":"Fresh Meat","year":null,"runtimeMin":115,"rating":"NR"},
 {"id":"ginger-snaps","title":"Ginger Snaps","year":null,"runtimeMin":123,"rating":"NR"},
 {"id":"hellbound-hellraiser-ii","title":"Hellbound: Hellraiser II","year":null,"runtimeMin":112,"rating":"R"},
-{"id":"hellraiser-1987","title":"Hellraiser","year":1987,"runtimeMin":108,"rating":"R"},
 {"id":"ken-russells-the-devils-2026","title":"Ken Russell'S the Devils","year":2026,"runtimeMin":129,"rating":"NC-17"},
 {"id":"klara-and-the-sun","title":"Klara and the Sun","year":null,"runtimeMin":132,"rating":"PG-13"},
 {"id":"la-bola-negra","title":"La Bola Negra","year":null,"runtimeMin":175,"rating":"R"},
