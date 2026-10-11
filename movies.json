@@ -1,5 +1,4 @@
 {"movies":[
-{"id":"9-to-5-re-release","title":"9 TO 5 Re-Release","year":null,"runtimeMin":125,"rating":"PG"},
 {"id":"a-prayer-for-the-dying-2026","title":"A Prayer for the Dying","year":2026,"runtimeMin":110,"rating":"NR"},
 {"id":"a-tale-of-two-sisters","title":"A Tale of Two Sisters","year":null,"runtimeMin":134,"rating":"R"},
 {"id":"ali-g-who-iz-i","title":"Ali G: Who Iz I?","year":null,"runtimeMin":104,"rating":"R"},
@@ -34,7 +33,6 @@
 {"id":"restoration-at-grayson-manor","title":"Restoration at Grayson Manor","year":null,"runtimeMin":105,"rating":"NR"},
 {"id":"screamplay","title":"Screamplay","year":null,"runtimeMin":107,"rating":"R"},
 {"id":"sense-and-sensibility-2026","title":"Sense and Sensibility","year":2026,"runtimeMin":152,"rating":"PG"},
-{"id":"showgirls","title":"Showgirls","year":null,"runtimeMin":146,"rating":"NC-17"},
 {"id":"street-fighter-2026","title":"Street Fighter","year":2026,"runtimeMin":134,"rating":"PG-13"},
 {"id":"the-cabinet-of-dr-caligari","title":"The Cabinet of Dr. Caligari","year":null,"runtimeMin":108,"rating":"NR"},
 {"id":"the-city-of-the-dead-1960","title":"The City of the Dead","year":1960,"runtimeMin":93,"rating":"NR"},
