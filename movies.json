@@ -1,4 +1,6 @@
 {"movies":[
+{"id":"agfadrome-mystery-voyage-november-2026","title":"AGFADROME MYSTERY VOYAGE (November 2026)","year":null,"runtimeMin":105,"rating":"G"},
+{"id":"all-about-my-mother","title":"All About My Mother","year":null,"runtimeMin":116,"rating":"R"},
 {"id":"being-heumann","title":"Being Heumann","year":null,"runtimeMin":127,"rating":"R"},
 {"id":"breeder","title":"Breeder","year":null,"runtimeMin":112,"rating":"R"},
 {"id":"christmas-at-the-kringles","title":"Christmas at the Kringles","year":null,"runtimeMin":115,"rating":"R"},
@@ -10,7 +12,6 @@
 {"id":"godzilla-minus-zero-2026","title":"Godzilla Minus Zero","year":2026,"runtimeMin":150,"rating":"R"},
 {"id":"godzilla-vs-king-kong","title":"Godzilla vs. King Kong","year":null,"runtimeMin":111,"rating":"NR"},
 {"id":"godzilla-vs-mechagodzilla","title":"Godzilla vs. Mechagodzilla","year":null,"runtimeMin":99,"rating":"PG"},
-{"id":"green-room-10th-anniversary","title":"GREEN ROOM 10th Anniversary","year":null,"runtimeMin":110,"rating":"R"},
 {"id":"halloween-1978","title":"Halloween","year":1978,"runtimeMin":106,"rating":"R"},
 {"id":"hdr-by-barco-early-access-how-to-rob-a-bank","title":"HDR By Barco: Early Access: HOW TO ROB A BANK","year":null,"runtimeMin":136,"rating":"R"},
 {"id":"how-to-rob-a-bank","title":"How to Rob a Bank","year":null,"runtimeMin":136,"rating":"R"},
@@ -38,7 +39,6 @@
 {"id":"the-magnificent-ambersons","title":"The Magnificent Ambersons","year":null,"runtimeMin":103,"rating":"NR"},
 {"id":"the-only-living-pickpocket-in-new-york","title":"The Only Living Pickpocket in New York","year":null,"runtimeMin":103,"rating":"R"},
 {"id":"the-rocky-horror-picture-show","title":"The Rocky Horror Picture Show","year":null,"runtimeMin":115,"rating":"R"},
-{"id":"trick-or-treat-1986","title":"Trick or Treat","year":1986,"runtimeMin":113,"rating":"R"},
 {"id":"we-own-the-night","title":"We Own the Night","year":null,"runtimeMin":133,"rating":"R"},
 {"id":"whalefall","title":"Whalefall","year":null,"runtimeMin":121,"rating":"PG-13"},
 {"id":"wicker","title":"Wicker","year":null,"runtimeMin":120,"rating":"R"},
