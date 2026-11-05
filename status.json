@@ -1,17 +1,13 @@
 {
  "sources": {
   "alamo": {
-   "status": "failed",
-   "lastRunAt": "2026-11-04T21:16:01.861Z",
-   "lastOkAt": "2026-11-04T14:18:31.576Z",
-   "theatersOk": 0,
-   "theatersFailed": 3,
-   "showtimes": 1100,
-   "errors": [
-    "Alamo Lower Manhattan: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [],\n    \"message\": \"Invalid input: expected object, received null\"\n  }\n]",
-    "Alamo Downtown Brooklyn: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [],\n    \"message\": \"Invalid input: expected object, received null\"\n  }\n]",
-    "Alamo Staten Island: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [],\n    \"message\": \"Invalid input: expected object, received null\"\n  }\n]"
-   ]
+   "status": "ok",
+   "lastRunAt": "2026-11-05T02:12:32.091Z",
+   "lastOkAt": "2026-11-05T02:12:32.091Z",
+   "theatersOk": 3,
+   "theatersFailed": 0,
+   "showtimes": 1035,
+   "errors": []
   }
  }
 }
