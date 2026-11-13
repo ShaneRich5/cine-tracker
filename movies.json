@@ -1,7 +1,6 @@
 {"movies":[
 {"id":"agfadrome-mystery-voyage-november-2026","title":"AGFADROME MYSTERY VOYAGE (November 2026)","year":null,"runtimeMin":105,"rating":"G"},
 {"id":"all-about-my-mother","title":"All About My Mother","year":null,"runtimeMin":116,"rating":"R"},
-{"id":"being-heumann","title":"Being Heumann","year":null,"runtimeMin":127,"rating":"R"},
 {"id":"billy-lynns-long-halftime-walk","title":"Billy Lynn'S Long Halftime Walk (","year":null,"runtimeMin":127,"rating":"R"},
 {"id":"bitter-christmas","title":"Bitter Christmas","year":null,"runtimeMin":126,"rating":"R"},
 {"id":"clayface","title":"Clayface","year":null,"runtimeMin":123,"rating":"R"},
@@ -45,6 +44,7 @@
 {"id":"the-searchers","title":"The Searchers","year":null,"runtimeMin":134,"rating":"NR"},
 {"id":"the-skin-i-live-in","title":"The Skin I Live in","year":null,"runtimeMin":135,"rating":"R"},
 {"id":"the-texas-chainsaw-massacre-2-35","title":"The Texas Chainsaw Massacre 2 35","year":null,"runtimeMin":116,"rating":"R"},
+{"id":"the-vile","title":"The Vile","year":null,"runtimeMin":112,"rating":"NR"},
 {"id":"thunder-alley","title":"Thunder Alley","year":null,"runtimeMin":104,"rating":"PG"},
 {"id":"true-stories","title":"True Stories","year":null,"runtimeMin":104,"rating":"PG"},
 {"id":"ufc-334","title":"Ufc 334","year":null,"runtimeMin":195,"rating":"NR"},
