@@ -1,5 +1,6 @@
 {"movies":[
 {"id":"batman-returns","title":"Batman Returns","year":null,"runtimeMin":141,"rating":"PG-13"},
+{"id":"behemoth","title":"Behemoth!","year":null,"runtimeMin":142,"rating":"R"},
 {"id":"billy-lynns-long-halftime-walk","title":"Billy Lynn'S Long Halftime Walk (","year":null,"runtimeMin":127,"rating":"R"},
 {"id":"bitter-christmas","title":"Bitter Christmas","year":null,"runtimeMin":126,"rating":"R"},
 {"id":"club-kid","title":"Club Kid","year":null,"runtimeMin":137,"rating":"R"},
@@ -26,6 +27,7 @@
 {"id":"pearl","title":"Pearl","year":null,"runtimeMin":117,"rating":"R"},
 {"id":"planes-trains-automobiles","title":"Planes, Trains & Automobiles","year":null,"runtimeMin":108,"rating":"R"},
 {"id":"point-blank-1967","title":"Point Blank","year":1967,"runtimeMin":112,"rating":"R"},
+{"id":"prince-3121-las-vegas-live-2026","title":"Prince 3121 Las Vegas Live","year":2026,"runtimeMin":130,"rating":"NR"},
 {"id":"september-songs","title":"September Songs","year":null,"runtimeMin":127,"rating":"NR"},
 {"id":"terror-tuesday-zodiac-35mm","title":"Terror Tuesday: ZODIAC (35mm)","year":null,"runtimeMin":172,"rating":"R"},
 {"id":"the-cat-in-the-hat","title":"The Cat in the Hat","year":null,"runtimeMin":129,"rating":"PG"},
@@ -40,6 +42,7 @@
 {"id":"tokyo-godfathers-subtitled","title":"TOKYO GODFATHERS (Subtitled)","year":null,"runtimeMin":113,"rating":"PG-13"},
 {"id":"true-stories","title":"True Stories","year":null,"runtimeMin":104,"rating":"PG"},
 {"id":"victorian-psycho","title":"Victorian Psycho","year":null,"runtimeMin":117,"rating":"R"},
+{"id":"violent-night-2","title":"Violent Night 2","year":null,"runtimeMin":130,"rating":"R"},
 {"id":"weird-wednesday-little-mother-35mm","title":"Weird Wednesday: LITTLE MOTHER (35mm)","year":null,"runtimeMin":105,"rating":"NR"},
 {"id":"wicker","title":"Wicker","year":null,"runtimeMin":120,"rating":"R"},
 {"id":"wild-horse-nine","title":"Wild Horse Nine","year":null,"runtimeMin":131,"rating":"R"},
