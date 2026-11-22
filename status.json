@@ -1,13 +1,15 @@
 {
  "sources": {
   "alamo": {
-   "status": "ok",
-   "lastRunAt": "2026-11-22T02:58:17.310Z",
+   "status": "partial",
+   "lastRunAt": "2026-11-22T11:02:20.719Z",
    "lastOkAt": "2026-11-22T02:58:17.310Z",
-   "theatersOk": 3,
-   "theatersFailed": 0,
-   "showtimes": 830,
-   "errors": []
+   "theatersOk": 2,
+   "theatersFailed": 1,
+   "showtimes": 856,
+   "errors": [
+    "Alamo Downtown Brooklyn: [\n  {\n    \"expected\": \"object\",\n    \"code\": \"invalid_type\",\n    \"path\": [],\n    \"message\": \"Invalid input: expected object, received null\"\n  }\n]"
+   ]
   }
  }
 }
