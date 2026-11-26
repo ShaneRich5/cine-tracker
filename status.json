@@ -2,11 +2,11 @@
  "sources": {
   "alamo": {
    "status": "ok",
-   "lastRunAt": "2026-11-25T22:22:52.462Z",
-   "lastOkAt": "2026-11-25T22:22:52.462Z",
+   "lastRunAt": "2026-11-26T04:54:35.428Z",
+   "lastOkAt": "2026-11-26T04:54:35.428Z",
    "theatersOk": 3,
    "theatersFailed": 0,
-   "showtimes": 1688,
+   "showtimes": 1624,
    "errors": []
   }
  }
